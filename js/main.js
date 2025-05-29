@@ -142,30 +142,30 @@ function setupAnimations() {
         scrollTrigger: {
             trigger: '.hero-main-title',
             start: 'top bottom,', // Inicia la animación cuando el título está en la parte superior de la ventana
-            end: 'bottom top', //
+            end: 'bottom+=300%', //
             scrub: true, // Valor más alto = movimiento más lento
         }
     });
 
     // Animación de desplazamiento vertical para las imágenes
     gsap.to('.hero-images.left', {
-        y: '-60%',
+        y: '-35%',
         ease: 'slow',
         scrollTrigger: {
             trigger: '.hero-wrapper',
             start: 'top top',
-            end: 'bottom bottom',
+            end: 'bottom top',
             scrub: true,
         }
     });
 
     gsap.to('.hero-images.right-slide', {
-        y: '-80%',
+        y: '-60%',
         ease: 'slow',
         scrollTrigger: {
             trigger: '.hero-wrapper',
             start: 'top top',
-            end: 'bottom bottom',
+            end: 'bottom top',
             scrub: true,
         }
     });
@@ -240,7 +240,7 @@ if (textRotatorMain) {
                 x: '-100%',
                 duration: 20,
                 ease: 'none',
-                repeat: -1,
+                repeat: 1,
                 delay: index * 2.5
             });
         });
