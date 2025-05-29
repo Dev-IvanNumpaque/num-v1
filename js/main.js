@@ -141,7 +141,7 @@ function setupAnimations() {
         ease: 'none',
         scrollTrigger: {
             trigger: '.hero-main-title',
-            start: 'top left', // Inicia la animación cuando el título está en la parte superior de la ventana
+            start: 'top bottom,', // Inicia la animación cuando el título está en la parte superior de la ventana
             end: 'bottom top', //
             scrub: true, // Valor más alto = movimiento más lento
         }
@@ -149,24 +149,24 @@ function setupAnimations() {
 
     // Animación de desplazamiento vertical para las imágenes
     gsap.to('.hero-images.left', {
-        y: '-100%',
-        ease: 'none',
+        y: '-60%',
+        ease: 'slow',
         scrollTrigger: {
             trigger: '.hero-wrapper',
             start: 'top top',
-            end: 'bottom top',
+            end: 'bottom bottom',
             scrub: true,
         }
     });
 
     gsap.to('.hero-images.right-slide', {
-        y: '-100%',
-        ease: 'none',
+        y: '-80%',
+        ease: 'slow',
         scrollTrigger: {
             trigger: '.hero-wrapper',
             start: 'top top',
-            end: 'bottom top',
-            scrub: -6,
+            end: 'bottom bottom',
+            scrub: true,
         }
     });
 
@@ -193,9 +193,9 @@ function setupAnimations() {
         ease: 'none',
         scrollTrigger: {
             trigger: '.section.for-logo',
-            start: 'top bottom',
+            start: 'top top',
             end: 'bottom top',
-            scrub: true,
+            scrub: true
         }
     });
 
@@ -224,4 +224,25 @@ function animateNumber(element) {
 function handleLinkClick(e) {
     // Implementa tu lógica personalizada para los clicks en links
     console.log('Link clicked:', e.target.href);
+}
+
+// Animación del texto rotatorio en la sección CTA
+const textRotatorMain = document.querySelector('.text-rotator-main');
+if (textRotatorMain) {
+    const textRotators = textRotatorMain.querySelectorAll('.text-rotator-content');
+    if (textRotators.length > 0) {
+        textRotators.forEach((rotator, index) => {
+            gsap.set(rotator, {
+                x: index === 0 ? '0%' : '100%'
+            });
+            
+            gsap.to(rotator, {
+                x: '-100%',
+                duration: 20,
+                ease: 'none',
+                repeat: -1,
+                delay: index * 2.5
+            });
+        });
+    }
 }
